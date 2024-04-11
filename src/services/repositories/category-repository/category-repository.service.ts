@@ -26,6 +26,14 @@ export class CategoryRepositoryService {
         return await this.categoryModel.findByPk(id);
     }
 
+    async getAll(limit: number, offset: number) {
+        return await this.categoryModel.findAll({
+            limit,
+            offset,
+            order: [['createdAt', 'DESC']],
+        })
+    }
+
     getCategoryModel() {
         return this.categoryModel;
     }

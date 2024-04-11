@@ -31,4 +31,21 @@ export class CategoryService {
         return category.getResponseDto();
     }
 
+    async getAll(
+        limit: number, 
+        offset: number
+    ) {
+        const categories = await this.catRepository.getAll(limit, offset);
+
+        return categories.map(cat => cat.getResponseDto('public'));
+    }
+
+    async getAllForAdmin(
+        limit: number, 
+        offset: number
+    ) {
+        const categories = await this.catRepository.getAll(limit, offset);
+
+        return categories.map(cat => cat.getResponseDto());
+    }
 }
