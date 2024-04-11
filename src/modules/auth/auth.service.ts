@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserRepositoryService } from 'src/services/repositories/user-repository/user-repository.service';
 import SignupDto from './dtos/signup.dto';
 import { JwtService } from 'src/services/jwt/jwt.service';
@@ -22,9 +22,7 @@ export class AuthService {
 
         const newUser = await this.userRepository.register(email, password);
 
-        const tokens = await this.jwtService.generateTokens(newUser.getResponseDto());
-
-        return tokens;
+        return await this.refresh(newUser.id);
     }
 
     async signin(
@@ -34,6 +32,17 @@ export class AuthService {
 
         if(!user)
             throw new BadRequestException('This user does not exist');
+
+        return await this.refresh(user.id);
+    }
+
+    async refresh(
+        userId: string
+    ) {
+        const user = await this.userRepository.getUserById(userId);
+
+        if(!user)
+            throw new UnauthorizedException('Unauthorized');
 
         const tokens = await this.jwtService.generateTokens(user.getResponseDto());
 

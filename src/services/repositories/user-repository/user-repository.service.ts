@@ -46,6 +46,10 @@ export class UserRepositoryService {
         return user;
     }
 
+    async getUserById(userId: string | number) {
+        return await this.userModel.findByPk(userId);
+    } 
+
     getUserModel() {
         return this.userModel;
     }

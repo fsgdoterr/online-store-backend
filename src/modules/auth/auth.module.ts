@@ -3,6 +3,8 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UserRepositoryModule } from 'src/services/repositories/user-repository/user-repository.module';
 import { JwtModule } from 'src/services/jwt/jwt.module';
+import RefreshJwtGuard from 'src/common/guards/refresh-jwt.guard';
+import AccessJwtGuard from 'src/common/guards/access-jwt.guard';
 
 @Module({
   imports: [
@@ -10,9 +12,15 @@ import { JwtModule } from 'src/services/jwt/jwt.module';
     JwtModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    RefreshJwtGuard,
+    AccessJwtGuard,
+  ],
   exports: [
-    JwtModule
+    JwtModule,
+    RefreshJwtGuard,
+    AccessJwtGuard,
   ],
 })
 export class AuthModule {}
