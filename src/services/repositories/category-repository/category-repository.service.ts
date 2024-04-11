@@ -10,6 +10,18 @@ export class CategoryRepositoryService {
         private readonly categoryModel: typeof CategoryEntity,
     ) {}
 
+    async create(
+        userId: number,
+        title: string,
+        parentId?: number,
+    ) {
+        return await this.categoryModel.create({
+            userId,
+            title,
+            parentId,
+        });
+    }
+
     getCategoryModel() {
         return this.categoryModel;
     }
