@@ -13,6 +13,7 @@ import UserEntity from 'src/common/entities/user/user.enity';
 import { DatabaseModule } from 'src/services/database/database.module';
 import { MainRepositoryModule } from 'src/services/repositories/main-repository.module';
 import { AuthModule } from '../auth/auth.module';
+import { CategoryModule } from '../category/category.module';
 
 @Module({
     imports: [
@@ -30,6 +31,7 @@ import { AuthModule } from '../auth/auth.module';
         ]),
         MainRepositoryModule,
         AuthModule,
+        CategoryModule,
     ],
 })
 export class AppModule {}
