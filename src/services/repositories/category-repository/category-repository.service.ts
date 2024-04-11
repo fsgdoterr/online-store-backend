@@ -22,6 +22,10 @@ export class CategoryRepositoryService {
         });
     }
 
+    async getById(id: string | number) {
+        return await this.categoryModel.findByPk(id);
+    }
+
     getCategoryModel() {
         return this.categoryModel;
     }
