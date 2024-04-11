@@ -12,6 +12,7 @@ import ProductEntity from 'src/common/entities/product/product.entity';
 import UserEntity from 'src/common/entities/user/user.enity';
 import { DatabaseModule } from 'src/services/database/database.module';
 import { MainRepositoryModule } from 'src/services/repositories/main-repository.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
     imports: [
@@ -28,6 +29,7 @@ import { MainRepositoryModule } from 'src/services/repositories/main-repository.
             OrderItemEntity
         ]),
         MainRepositoryModule,
+        AuthModule,
     ],
 })
 export class AppModule {}
