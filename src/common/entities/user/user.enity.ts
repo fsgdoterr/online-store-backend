@@ -5,6 +5,8 @@ import ProductEntity from "../product/product.entity";
 import CartItemEntity from "../cart-item/cart-item.entity";
 import OrderEntity from "../order/order.entity";
 import ProductImageEntity from "../product-image/product-image.entity";
+import { instanceToPlain } from "class-transformer";
+import UserResponseDto from "./user-response.dto";
 
 @Table({
     tableName: "users",
@@ -40,4 +42,8 @@ export default class UserEntity extends Model {
 
     @HasMany(() => ProductImageEntity)
     productImages: ProductImageEntity[];
+
+    getResponseDto() {
+        return instanceToPlain(new UserResponseDto(this.dataValues));
+    }
 }
