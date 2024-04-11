@@ -14,6 +14,7 @@ import { DatabaseModule } from 'src/services/database/database.module';
 import { MainRepositoryModule } from 'src/services/repositories/main-repository.module';
 import { AuthModule } from '../auth/auth.module';
 import { CategoryModule } from '../category/category.module';
+import { AttributeLabelModule } from '../attribute-label/attribute-label.module';
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { CategoryModule } from '../category/category.module';
         MainRepositoryModule,
         AuthModule,
         CategoryModule,
+        AttributeLabelModule
     ],
 })
 export class AppModule {}
