@@ -35,4 +35,22 @@ export class AttributeLabelService {
         return label.getResponseDto();
     }
 
+    async getAll(
+        limit: number, 
+        offset: number
+    ) {
+        const categories = await this.attrRepository.getAllLabels(limit, offset);
+
+        return categories.map(cat => cat.getResponseDto('public'));
+    }
+
+    async getAllForAdmin(
+        limit: number, 
+        offset: number
+    ) {
+        const categories = await this.attrRepository.getAllLabels(limit, offset);
+
+        return categories.map(cat => cat.getResponseDto());
+    }
+
 }
