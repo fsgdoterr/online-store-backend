@@ -11,6 +11,7 @@ import ProductImageEntity from 'src/common/entities/product-image/product-image.
 import ProductEntity from 'src/common/entities/product/product.entity';
 import UserEntity from 'src/common/entities/user/user.enity';
 import { DatabaseModule } from 'src/services/database/database.module';
+import { MainRepositoryModule } from 'src/services/repositories/main-repository.module';
 
 @Module({
     imports: [
@@ -26,6 +27,7 @@ import { DatabaseModule } from 'src/services/database/database.module';
             OrderEntity,
             OrderItemEntity
         ]),
+        MainRepositoryModule,
     ],
 })
 export class AppModule {}
