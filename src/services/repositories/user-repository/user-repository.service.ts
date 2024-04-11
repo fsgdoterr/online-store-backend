@@ -33,6 +33,19 @@ export class UserRepositoryService {
         return newUser;
     }
 
+    async login(
+        email: string,
+        password: string,
+    ) {
+        const user = await this.userModel.findOne({where: { email }});
+        if(!user) return false;
+
+        const isPasswordEqual = await bcrypt.compare(password, user.password);
+        if(!isPasswordEqual) return false;
+
+        return user;
+    }
+
     getUserModel() {
         return this.userModel;
     }
