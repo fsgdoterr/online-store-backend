@@ -5,4 +5,6 @@ export enum EEnvVariables {
     DB_USER = 'DB_USER',
     DB_PASS = 'DB_PASS',
     DB_NAME = 'DB_NAME',
+    ACCESS_SECRET = 'ACCESS_SECRET',
+    REFRESH_SECRET = 'REFRESH_SECRET',
 }
